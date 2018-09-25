@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+}
+
+header{
+    color: white;
+    margin:auto;
+    text-align: center;
+}
+
+button{
+    color: green;
+    font-weight: bold;
+}
+.btn{
+    display:block;
+    margin-right:auto;
+    margin-left:auto;
+    width:45%;
+}
+
+.divContainer{
+  text-align: center;
+}
+
+.innerBtn{
+    display:inline-block;
+    margin:auto;
+    width: 45%;
+}
+
