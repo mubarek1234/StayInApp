@@ -32,3 +32,39 @@ button{
     width: 45%;
 }
 
+.results{
+    color:white;
+    text-align: center;
+    margin: auto;
+}
+
+section{
+    color: white;
+    text-align: center;
+}
+
+footer{
+    text-align: center;
+}
+
+.movieTitle{
+    display:inline;
+}
+
+p.genreP{
+   text-align: center;
+    display: inline;
+}
+
+.genreMovie{
+    margin: auto;
+    display:inline;
+}
+
+.ratingMovie{
+    width: 33.3%;
+}
+
+.movieClass{
+    background-color: white;
+}
