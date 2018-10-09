@@ -11,10 +11,15 @@ div.top-row{
 }
 
 
+.movieRow{
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
+
 div.movieContainer{
-    width: 300px;
-    height: 300px;
-    background: green;
+    display: inline-block;
+    width: 25%;
     margin: 0 auto;
     font-size: 14px;
     list-style: none;
@@ -33,7 +38,10 @@ div.movieContainer{
   }
 
 
-
+li.top-row-text-list-item{
+    list-style: none;
+    color: white;
+}
 ul.list-item-span{
     padding: 0;
 }
@@ -109,6 +117,17 @@ main div.movieSpecs{
     width: 100%;
 }
 
+/*When editing the size of the images,
+smaller viewports: height and width 300px*/
 #moviesBoys{
-    background-image: url("https://images.cdn4.stockunlimited.net/preview1300/cinema-background-with-movie-objects_1823382.jpg");
+    display: block;
+    height: 450px;
+    width: 450px;   
+    background-image:url("https://images.cdn4.stockunlimited.net/preview1300/cinema-background-with-movie-objects_1823382.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+
+.backBtn{
+   
 }

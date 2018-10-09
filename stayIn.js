@@ -54,7 +54,7 @@ function returnTitleTrailer(title){
  */
 function renderResult(items){
     console.log(items);
-    return `<a href = "https://www.youtube.com/watch?v=${items.id.videoId}" role="link" aria-roledescription="thumbnail link to the ${items.snippet.title} video">
+    return `<a href="https://www.youtube.com/watch?v=${items.id.videoId}" role="link" aria-roledescription="thumbnail link to the ${items.snippet.title} video">
         <img class="youtubeThumbnail" src="${items.snippet.thumbnails.medium.url}" 
         alt = "${items.snippet.title}"></a>`; 
 } 
@@ -74,7 +74,7 @@ function get_movie_API(){
       
       $.ajax(settings).done(function (response) {
        console.log(response);
-       var size = movieCounter+5;
+       var size = movieCounter+6;
        //loads 5 movies at a time.
        
        for(let i = movieCounter; i < size; i++){
@@ -110,6 +110,18 @@ function get_moreInfoMovie_API(id){
       });
 }
 
+function renderDivRow(){
+    renderBackButton();
+    $('main').append(`
+        <div class="movieRow"></div>
+    `)
+}
+
+function renderBackButton(){
+    $('main').html(`<button class="backBtn" type="submit">back</button>`);
+   
+}
+
 function clickBoys(){
     $('#stayIn').on('click', function(event){
         event.preventDefault();
@@ -135,6 +147,7 @@ function addContentBoys(){
 function isMovieBtnClickedBoys(){
     $('.divContainer').on('click', function(event){
         event.preventDefault();
+        renderDivRow();
         get_movie_API();
         addLoadMoreMoviesBtn();
     });
@@ -145,8 +158,9 @@ function getTitleOfMovieAndRating(genre, title, rating,id,imgPath){
     //this is what needs to be searched for the youtubeAPI
     let searchQuery = returnTitleTrailer(title);
     get_YouTube_API(searchQuery);
-    $('main').append(
-        `<div class="movieContainer" data-id=${movieCounters} alignWithTop=false> 
+   
+    $('main .movieRow').append(
+        `<div class="movieContainer" data-id=${movieCounters}> 
             <div class="top-row">
             <div id=${thumbnailIndex} class='top-row-img' ></div>
             <ul class='top-row-text-list'>
@@ -162,14 +176,14 @@ function getTitleOfMovieAndRating(genre, title, rating,id,imgPath){
                     <span class='list-item-span'>Genres:</span>
                     <ul class='list-item-span'>${genreHTML}</ul>
                 </li>
+                </div>
             </div>
-        </div>
         `
        
     );
 
     thumbnailIndex++;
-    if((movieCounters%5)===0){
+    if((movieCounters%6)===0){
         let offset = $(`[data-id=${movieCounters}]`).offset();
         offset.left -= 20;
         offset.top -= 20;
