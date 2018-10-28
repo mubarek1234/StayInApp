@@ -10,6 +10,19 @@ let thumbnailNumber=0;
 let thumbnailIndex=0;
 let pages = 1;
 let arr = [];
+//this is going to try to fix the 18th movie
+//problem
+let intermediate = [];
+
+function resetValues(){
+    movieCounter = 0;
+    list = [];
+    movieCounters = 0;
+    thumbnailNumber=0;
+    thumbnailIndex=0;
+    pages = 1;
+    arr = [];
+}
 
 function get_YouTube_API(curr){
     const settings ={
@@ -71,10 +84,9 @@ function get_movie_API(){
         "data": "{}",
       }
       
-      
       $.ajax(settings).done(function (response) {
        console.log(response);
-       var size = movieCounter+6;
+       var size = movieCounter+8;
        //loads 5 movies at a time.
        
        for(let i = movieCounter; i < size; i++){
@@ -84,9 +96,6 @@ function get_movie_API(){
         movieCounters++;
         }
         });
-
-
-
     }
 
 function get_moreInfoMovie_API(id){
@@ -106,7 +115,6 @@ function get_moreInfoMovie_API(id){
         console.log(response.title);
         getTitleOfMovieAndRating(response.genres, response.title, 
             response.vote_average, response.id,response.poster_path);
-       
       });
 }
 
@@ -122,6 +130,14 @@ function renderBackButton(){
    
 }
 
+function ifBackButton(){
+    $('main').on('click', '.backBtn' ,function(event){
+        event.preventDefault();
+        loadBoysPage();
+        emptyFooter();
+        resetValues();
+    });
+}
 function clickBoys(){
     $('#stayIn').on('click', function(event){
         event.preventDefault();
@@ -132,6 +148,7 @@ function clickBoys(){
 function loadBoysPage(){
     $('main').empty();
     addContentBoys();
+    ifBackButton();
 }
 
 function addContentBoys(){
@@ -224,6 +241,14 @@ function addLoadMoreMoviesBtn(){
         `<footer><button class="loadMore" type="submit">Load more</button></footer>`
     )
     loadMoreMovies();
+    ifBackButton();
+}
+
+/**This function takes care of situations where the load 
+ * button isn't being called for the first time
+ */
+function emptyFooter(){
+    $('footer').empty();
 }
 
 /**Loads more movies */

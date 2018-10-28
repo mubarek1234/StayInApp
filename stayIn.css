@@ -19,7 +19,7 @@ div.top-row{
 
 div.movieContainer{
     display: inline-block;
-    width: 25%;
+    width: 20%;
     margin: 0 auto;
     font-size: 14px;
     list-style: none;
@@ -128,6 +128,8 @@ smaller viewports: height and width 300px*/
     background-size: cover;
 }
 
+/*The margin left may have to be adjusted for different viewports*/
 .backBtn{
-   
+   display: block;
+   margin-left: 9.5%;
 }
